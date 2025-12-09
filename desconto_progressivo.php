@@ -32,6 +32,19 @@
                 );
             }
 
+            //tratamento de valores negativos
+            if ($produto['preco_unitario'] <=0 || $produto['quantidade'] <= 0) {
+                throw new Exception(
+                    "Valores inválidos inseridos nos campos, corrija os dados e tente novamente"
+                );
+            }
+
+            if (is_float($produto['quantidade'])) {
+                throw new Exception(
+                    "Valor inválido inserido na quantidade, corrija os dados e tente novamente"
+                );
+            }
+
             $subtotal += $produto['preco_unitario'] * $produto['quantidade'];
         }
 
