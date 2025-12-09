@@ -16,6 +16,7 @@
         $desconto = 0.00;
 
         foreach ($produtos as $produto) {
+            //sanitização para campos necessários ausentes
             if (!isset($produto['preco_unitario'], $produto['quantidade'], $produto['id'])) {
                 echo("campos necessários faltando para o cálculo.\n");
 
@@ -25,6 +26,7 @@
                 continue;
             }
 
+            //tratamento de erro dos valores inseridos nos campos
             if (!is_numeric($produto['preco_unitario']) || !is_numeric($produto['quantidade'])) {
                 echo("valores inválidos inseridos para o cálculo.\n");
                 
@@ -90,6 +92,7 @@
     //para printar ele arredonda o valor, por isso usei number_format, só que o 
     //number_format retorna o valor em string
 
+    //saídas
     $total = totalCarrinho($produtos1);
     echo "Total do carrinho 1: R$ " . number_format($total, 2) . "\n"; 
 
