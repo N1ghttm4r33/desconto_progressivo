@@ -1,22 +1,14 @@
 <?php
     function totalCarrinho(array $produtos): float
     {
-        //primeiro é necessário ver se a entrada não está vazia
-        //pois se estiver é desnecessário o resto do código
         if (empty($produtos)) {
             return 0.00;
         }
 
-        //variaveis iniciais para a quantidade de produtos diferentes
         $produtos_diferentes = 0;
-
-        //variaveis para o valor do carrinho
         $subtotal = 0.00;
         $desconto = 0.00;
 
-        //aqui ele percorre por todos os produtos.
-        //o campo nome não é utilizado nem verificado pois não é necessário pra essa função
-        // a não ser por motivos de segurança
         foreach ($produtos as $produto) {
             //sanitização para campos necessários ausentes
             if (!isset($produto['preco_unitario'], $produto['quantidade'], $produto['id'])) {
@@ -39,6 +31,7 @@
                 );
             }
 
+            //não podem existir por exemplo 1.3 fones de ouvido
             if (is_float($produto['quantidade'])) {
                 throw new Exception(
                     "Valor inválido inserido na quantidade, corrija os dados e tente novamente"
@@ -48,20 +41,16 @@
             $subtotal += $produto['preco_unitario'] * $produto['quantidade'];
         }
 
-        //antes mesmo de ver o desconto, se não existe valor, não há necessidade
-        //de ser calculado desconto, então retorna 0
         if ($subtotal == 0) {
             return 0.00;
         }
 
-        //para não utilizar outros loops é utilizado o count e array_unique
         //menos uma variável necessária utilizando o array_column
         //se fosse utilizar de outra forma, teria que por exemplo declarar um vetor e
         //receber os dados dentro do foreach
         $produtos_diferentes = count(array_unique(array_column($produtos, 'id')));
 
         //match nesse caso é melhor pois pode retornar numérico e atribuir a uma variável
-        //retorna o valor total do desconto a ser aplicado
         $desconto = match($produtos_diferentes) {
             1 => 0.00,
             2 => $subtotal * 0.05,
