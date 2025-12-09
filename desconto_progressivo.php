@@ -8,7 +8,6 @@
         }
 
         //variaveis iniciais para a quantidade de produtos diferentes
-        $ids = [];
         $produtos_diferentes = 0;
 
         //variaveis para o valor do carrinho
@@ -33,7 +32,6 @@
                 );
             }
 
-            $ids[] = $produto['id'];
             $subtotal += $produto['preco_unitario'] * $produto['quantidade'];
         }
 
@@ -44,7 +42,10 @@
         }
 
         //para não utilizar outros loops é utilizado o count e array_unique
-        $produtos_diferentes = count(array_unique($ids));
+        //menos uma variável necessária utilizando o array_column
+        //se fosse utilizar de outra forma, teria que por exemplo declarar um vetor e
+        //receber os dados dentro do foreach
+        $produtos_diferentes = count(array_unique(array_column($produtos, 'id')));
 
         //match nesse caso é melhor pois pode retornar numérico e atribuir a uma variável
         //retorna o valor total do desconto a ser aplicado
