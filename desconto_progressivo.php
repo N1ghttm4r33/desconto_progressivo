@@ -81,7 +81,7 @@
         ['id' => 4, 'nome' => 'Fone de Ouvido', 'preco_unitario' => 200.00, 'quantidade' => 1],
     ];
 
-    $produtos = [
+    $produtos5 = [
         ['id' => 1, 'nome' => 'Cabo USB', 'preco_unitario' => 10.00, 'quantidade' => 1],
         ['id' => 1, 'nome' => 'Cabo USB', 'preco_unitario' => 10.00, 'quantidade' => 2],
     ];
@@ -101,4 +101,7 @@
 
     $total = totalCarrinho($produtos4);
     echo "Total do carrinho 4: R$ " . number_format($total, 2) . "\n"; 
+
+    $total = totalCarrinho($produtos5);
+    echo "Total do carrinho 5: R$ " . number_format($total, 2) . "\n"; 
 ?>
