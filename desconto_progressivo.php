@@ -18,20 +18,16 @@
         foreach ($produtos as $produto) {
             //sanitização para campos necessários ausentes
             if (!isset($produto['preco_unitario'], $produto['quantidade'], $produto['id'])) {
-                echo("campos necessários faltando para o cálculo.\n");
-
-                //aqui eu só continuei o loop, porém seria necessário tratar 
-                //o erro de uma forma melhor para o caso em específico, como parar o
-                //processamento e avisar o usuário, gerar uma exeção
-                continue;
+                throw new Exception(
+                    "Campos necessários para o processamento da compra estão ausentes"
+                );
             }
 
             //tratamento de erro dos valores inseridos nos campos
             if (!is_numeric($produto['preco_unitario']) || !is_numeric($produto['quantidade'])) {
-                echo("valores inválidos inseridos para o cálculo.\n");
-                
-                //aqui é a mesma coisa que disse em cima.
-                continue;
+                throw new Exception(
+                    "Valores inválidos inseridos nos campos, corrija os dados e tente novamente"
+                );
             }
 
             $ids[] = $produto['id'];
