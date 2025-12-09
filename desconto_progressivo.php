@@ -1,7 +1,8 @@
 <?php
     function totalCarrinho(array $produtos): float
     {
-        //verifica se o array está vazio
+        //primeiro é necessário ver se a entrada não está vazia
+        //pois se estiver é desnecessário o resto do código
         if (empty($produtos)) {
             return 0.00;
         }
@@ -12,9 +13,11 @@
 
         //variaveis para o valor do carrinho
         $subtotal = 0.00;
-        $valor_total = 0.00;
         $desconto = 0.00;
 
+        //aqui ele percorre por todos os produtos.
+        //o campo nome não é utilizado nem verificado pois não é necessário pra essa função
+        // a não ser por motivos de segurança
         foreach ($produtos as $produto) {
             //sanitização para campos necessários ausentes
             if (!isset($produto['preco_unitario'], $produto['quantidade'], $produto['id'])) {
@@ -34,11 +37,13 @@
             $subtotal += $produto['preco_unitario'] * $produto['quantidade'];
         }
 
+        //antes mesmo de ver o desconto, se não existe valor, não há necessidade
+        //de ser calculado desconto, então retorna 0
         if ($subtotal == 0) {
             return 0.00;
         }
 
-        //conta a quantidade de produtos unicos (diferentes) conforme o site do php
+        //para não utilizar outros loops é utilizado o count e array_unique
         $produtos_diferentes = count(array_unique($ids));
 
         //match nesse caso é melhor pois pode retornar numérico e atribuir a uma variável
@@ -50,10 +55,7 @@
             default => $subtotal * 0.15,
         };
 
-        //o round é utilizado para formatar para duas casas decimais em tipo float
-        $valor_total = round($subtotal - $desconto, 2);
-
-        return $valor_total;
+        return round($subtotal - $desconto, 2);
     }
 
     //entradas
