@@ -90,17 +90,17 @@
 
     //saídas
     $total = totalCarrinho($produtos1);
-    echo "Total do carrinho 1: R$ " . number_format($total, 2) . "\n"; 
+    echo "Total do carrinho 1: R$ " . number_format($total, 2) . "<br>"; 
 
     $total = totalCarrinho($produtos2);
-    echo "Total do carrinho 2: R$ " . number_format($total, 2) . "\n"; 
+    echo "Total do carrinho 2: R$ " . number_format($total, 2) . "<br>"; 
 
     $total = totalCarrinho($produtos3);
-    echo "Total do carrinho 3: R$ " . number_format($total, 2) . "\n"; 
+    echo "Total do carrinho 3: R$ " . number_format($total, 2) . "<br>"; 
 
     $total = totalCarrinho($produtos4);
-    echo "Total do carrinho 4: R$ " . number_format($total, 2) . "\n"; 
+    echo "Total do carrinho 4: R$ " . number_format($total, 2) . "<br>"; 
 
     $total = totalCarrinho($produtos5);
-    echo "Total do carrinho 5: R$ " . number_format($total, 2) . "\n"; 
+    echo "Total do carrinho 5: R$ " . number_format($total, 2) . "<br>"; 
 ?>
