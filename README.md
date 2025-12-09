@@ -87,7 +87,11 @@ para o tratamento de erros é necessário colocar o seguinte código no iníco d
 # Referências utilizadas:
 
 https://www.php.net/manual/en/function.array-unique.php
+
 https://www.php.net/manual/en/function.number-format.php
+
 https://www.php.net/manual/pt_BR/control-structures.match.php
+
 https://www.php.net/manual/pt_BR/language.exceptions.php
+
 https://www.php.net/manual/pt_BR/ref.errorfunc.php
