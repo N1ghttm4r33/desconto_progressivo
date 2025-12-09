@@ -1,4 +1,37 @@
-entradas:
+# Lógica de Carrinho de Compras com Desconto Progressivo
+
+**Objetivo:** Você está ajudando a construir a lógica de um e-commerce e foi solicitado a desenvolver um módulo simples para cálculo do valor total do carrinho, com desconto progressivo aplicado de acordo com a quantidade de produtos diferentes.
+
+Seu desafio é escrever uma função em PHP que calcule o valor total de um carrinho de compras com base nas seguintes regras.
+
+### Regras do Desafio
+
+Você deverá implementar a função:
+
+``` php
+function totalCarrinho(array $produtos): float
+```
+
+Essa função receberá como parâmetro um array de produtos, onde cada produto tem os seguintes campos:
+
+- `id` (int): identificador único do produto
+- `nome` (string): nome do produto
+- `preco_unitario` (float): preço unitário do produto
+- `quantidade` (int): quantidade comprada do produto
+
+O retorno dessa função deverá ser o valor total do carrinho, considerando o desconto progressivo, se necessário.
+
+### Regras de Desconto Progressivo
+O desconto aplicado no valor total do carrinho depende da quantidade de produtos diferentes (com base no id do produto):
+
+| Produtos Diferentes | Desconto Aplicado |
+| ------------------- | ----------------- |
+| 1                   | 0%                |
+| 2                   | 5%                |
+| 3                   | 10%               |
+| 4 ou mais           | 15%               |
+
+## entradas:
 
     $produtos1 = [
       ['id' => 1, 'nome' => 'Cabo HDMI', 'preco_unitario' => 30.00, 'quantidade' => 2],
@@ -32,7 +65,7 @@ entradas:
     ];
     // Saída esperada: 30.00
 
-saídas:
+## saídas:
 
     Total do carrinho 1: R$ 60.00
 
